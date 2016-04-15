@@ -1,0 +1,17 @@
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @attorneys.count == 0 %>
+  <h1>There are no Attorney currently in this category</h1>
+<% else %>
+
+<div class="row">
+
+    <% @attorneys.each do |attorney| %>
+    <div class="col-md-3">
+      <a href="/attorneys/<%= attorney.id %>">
+        <%= image_tag attorney.attorney_img.url(:attorney_index), class: "attorney" %>
+      </a>
+    </div>
+    <% end %>
+</div>
+<% end %>
