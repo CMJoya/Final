@@ -1,9 +1,11 @@
-<%= simple_form_for([@physician,@physician.reviews.build]) do |f| %>
+<!-- <%= debug @professional %> -->
+<%= simple_form_for @review do |f| %>
 <div id="rating-form">
   <label>Rating</label>
 </div>
   <%= f.input :comment %>
   <%= f.button :submit, :class => 'btn-custom2' %>
+  <%= f.hidden_field :professional_id, value: @professional.id %>
 <% end %>
 
 <script>

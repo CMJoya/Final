@@ -3,7 +3,8 @@
   <div class="new-attorney-form">
 
     <h1>New Attorney</h1>
-    <%= render 'form' %>
+    <%= render partial: 'professionals/form',
+               locals: { model: @attorney, form_path: attorneys_path } %>
 
   </div>
 

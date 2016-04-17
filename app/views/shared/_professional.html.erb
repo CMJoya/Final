@@ -1,0 +1,62 @@
+<!-- Showing physician Image -->
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag professional.image.url(:image_show), class: "physician-show" %>
+  </div>
+  <!-- SHowing Physician Info  -->
+  <div class="col-md-8">
+    <div class="physician-info">
+
+      <h2 class="physician-full-name"><%= professional.full_name %></h2>
+      <h4 class="avg-rating">Average Rating</h4>
+      <div class="average-review-rating" data-score=<%= professional.average_rating %>></div>
+      <span class="number-of-reviews">Based on <%= professional.reviews.count %> reviews</span>
+      <p class="physician-bio"><%= professional.bio %></p>
+
+    </div>
+  </div>
+</div>
+<!-- SHowing Add Review button And Reviews  -->
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="reviews">
+
+      <h1>Reviews</h1>
+      <%= render professional.reviews %>
+      <!--where the review/rating  -->
+      <div>
+        <%= link_to "Add Review", new_review_path(professional.id), class: "btn-custom" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SHowing back button and conditional for only the user that created Physician to Edit and Delete  -->
+<div class="links btn-group">
+  <%= link_to "Go Back", root_path, class: "btn btn-custom"  %>
+
+  <% if user_signed_in? %>
+      <%= link_to "Edit", edit_physician_path(professional.id), class: "btn btn-custom" %>
+      <%= link_to "Delete", professional_path(professional.id), method: :delete, data: { confirm: "Are You Sure?"}, class: "btn btn-custom" %>
+  <% end %>
+</div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function () {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

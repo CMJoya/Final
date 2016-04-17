@@ -1,66 +1,54 @@
 class PhysiciansController < ApplicationController
-    before_action :find_physican, only: [:show, :edit, :update, :delete]
-    before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
 
-    def index
-        if params[:category].blank?
-            @physicians = Physician.all.order('created_at DESC')
-        else
-            @category_id = Category.find_by(name: params[:category]).id
-            @physicians = Physician.where(category_id: @category_id).order('created_at DESC')
-        end
+  def index
+    profession = Profession.find_by(name: 'Physician')
+    @physicians = profession.professionals.order(active_rating: :desc)
+  end
+
+  def show
+    @physician = Professional.find(params[:id])
+  end
+
+  def new
+    @physician = Professional.new
+  end
+
+  def create
+    profession = Profession.find_by(name: 'Physician')
+    @physician = profession.professionals.new(physician_params)
+    if @physician.save
+      redirect_to physicians_path
+    else
+      render :new
     end
+  end
 
-    def new
-        @physician = current_user.physicians.build
-        @categories = Category.all.map { |c| [c.name, c.id] }
+  def edit
+    @physician = Professional.find(params[:id])
+  end
+
+  def update
+    @physician = Professional.find(params[:id])
+    if @physician.update(physician_params)
+      redirect_to physician_path(@physician)
+    else
+      render :edit
     end
+  end
 
-    def show
-        if @physician.reviews.blank?
-            @average_review = 0
-        else
-            @average_review = @physician.reviews.average(:rating).round(2)
-        end
-    end
+  def destroy
+    @physician = Professional.find_by id: params[:id]
+    @physician.destroy
+    redirect_to physicians_path
+  end
 
-    def create
-        @physician = current_user.physicians.build(physician_params)
-        @physician.category_id = params[:category_id]
+  private
 
-        if @physician.save
-            redirect_to physicians_path
-        else
-            render :new
-        end
-    end
-
-    def edit
-        @categories = Category.all.map { |c| [c.name, c.id] }
-    end
-
-    def update
-        @physician.category_id = params[:category_id]
-        if @physician.update(physician_params)
-            redirect_to physician_path(@physician)
-        else
-            render :edit
-        end
-    end
-
-    def destroy
-        @physician = Physician.find_by id: params[:id]
-        @physician.destroy
-        redirect_to physicians_path
-    end
-
-    private
-
-    def physician_params
-        params.require(:physician).permit(:first_name, :last_name, :address, :phone_number, :email, :bio, :category_id, :physician_img)
-    end
-
-    def find_physican
-        @physician = Physician.find_by id: params[:id]
-    end
+  def physician_params
+    params
+      .require(:professional)
+      .permit(:first_name, :last_name, :address, :phone_number,
+              :email, :bio, :image)
+  end
 end

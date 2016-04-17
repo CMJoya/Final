@@ -1,6 +1,5 @@
-<h1 class="current-category"><%= params[:category] %></h1>
 
-<% if @attorneys.count == 0 %>
+<% if @attorneys.empty? %>
   <h1>There are no Attorney currently in this category</h1>
 <% else %>
 
@@ -8,9 +7,9 @@
 
     <% @attorneys.each do |attorney| %>
     <div class="col-md-3">
-      <a href="/attorneys/<%= attorney.id %>">
-        <%= image_tag attorney.attorney_img.url(:attorney_index), class: "attorney" %>
-      </a>
+      <%= link_to professional_path(attorney.id) do %>
+        <%= image_tag attorney.image.url(:image_index), class: "attorney" %>
+      <% end %>
     </div>
     <% end %>
 </div>

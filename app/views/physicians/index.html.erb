@@ -1,6 +1,5 @@
-<h1 class="current-category"><%= params[:category] %></h1>
 
-<% if @physicians.count == 0 %>
+<% if @physicians.empty? %>
   <h1>There are no Physician currently in this category</h1>
 <% else %>
 
@@ -8,9 +7,9 @@
 
     <% @physicians.each do |physician| %>
     <div class="col-md-3">
-      <a href="/physicians/<%= physician.id %>">
-        <%= image_tag physician.physician_img.url(:physician_index), class: "physician" %>
-      </a>
+      <%= link_to professional_path(physician.id) do %>
+        <%= image_tag physician.image.url(:image_index), class: "physician" %>
+      <% end %>
     </div>
     <% end %>
 </div>

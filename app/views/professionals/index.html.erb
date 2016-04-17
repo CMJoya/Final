@@ -1,0 +1,39 @@
+
+<% if @professionals.empty? %>
+  <h1>There are no Attorney currently in this category</h1>
+<% else %>
+<div class="row">
+
+    <% @professionals.each do |attorney| %>
+    <div class="col-md-3">
+      <%= link_to professional_path(attorney.id) do %>
+        <%= image_tag attorney.image.url(:image_index), class: "attorney" %>
+      <% end %>
+      <h2 class="physician-full-name"><%= attorney.full_name %></h2>
+      <div class="average-review-rating" data-score=<%= attorney.average_rating %>></div>
+      <span class="number-of-reviews">Based on <%= attorney.reviews.count %> reviews</span>
+
+    </div>
+    <% end %>
+</div>
+<% end %>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function () {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

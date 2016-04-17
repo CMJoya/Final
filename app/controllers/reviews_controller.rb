@@ -1,32 +1,33 @@
 class ReviewsController < ApplicationController
-  before_action :find_attorney
-  before_action :find_physician
-  before_action :find_review, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
 
   def new
-    @review = Review.new
+    @professional = Professional.find(params[:id])
+    @review = @professional.reviews.new
   end
 
   def create
     @review = Review.new(review_params)
-    @review.physician_id = @physician.id
+    professional = @review.professional
     @review.user_id = current_user.id
-
     if @review.save
-      redirect_to physician_path(@physician)
+      avg_rating = professional.reviews.average(:rating).round(2)
+      professional.average_rating = avg_rating
+      professional.save
+      redirect_to professional_path(@review.professional.id)
     else
       render :new
     end
   end
 
   def edit
+    @review = Review.find(params[:id])
   end
 
   def update
-
+    @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to physician_path(@physician)
+      redirect_to professional_path(@review.professional.id)
     else
       render :edit
 
@@ -34,25 +35,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
     @review.destroy
-    redirect_to physician_path(@physician)
+    redirect_to professional_path(@review.professional.id)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :comment)
-  end
-
-  def find_physician
-    @physician = Physician.find(params[:physician_id])
-  end
-
-  def find_attorney
-    @attorney = Attorney.find(params[:attorney_id])
-  end
-
-  def find_review
-    @review = Review.find(params[:id])
+    params.require(:review).permit(:rating, :comment, :professional_id)
   end
 end

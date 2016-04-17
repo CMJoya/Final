@@ -1,8 +1,0 @@
-<%= simple_form_for @attorney, :html => {:multipart => true} do |f| %>
-  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select A Category")  %>
-  <%= f.file_field :attorney_img %>
-  <%= f.input :first_name, label: "First Name" %>
-  <%= f.input :last_name, label: "Last Name" %>
-  <%= f.input :bio, lable: "Bio" %>
-  <%= f.button :submit, :class => 'btn-custom2' %>
-<% end %>

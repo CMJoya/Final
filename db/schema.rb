@@ -11,67 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415210054) do
+ActiveRecord::Schema.define(version: 20160416155432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attorneys", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "address"
-    t.string   "phone_number"
-    t.string   "email"
-    t.text     "bio"
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "photo_id"
-    t.string   "attorney_img_file_name"
-    t.string   "attorney_img_content_type"
-    t.integer  "attorney_img_file_size"
-    t.datetime "attorney_img_updated_at"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "physicians", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "photo_id"
-    t.text     "bio"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.string   "physician_img_file_name"
-    t.string   "physician_img_content_type"
-    t.integer  "physician_img_file_size"
-    t.datetime "physician_img_updated_at"
-    t.string   "email"
-    t.string   "address"
-    t.string   "phone_number"
-  end
-
   create_table "professionals", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name",                       null: false
+    t.string   "last_name",                        null: false
+    t.string   "address",                          null: false
+    t.string   "phone_number",                     null: false
+    t.string   "email",                            null: false
+    t.text     "bio",                              null: false
+    t.integer  "profession_id",                    null: false
+    t.float    "average_rating",     default: 0.0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "professions", force: :cascade do |t|
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.integer  "professional_id", null: false
     t.integer  "rating"
     t.text     "comment"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "user_id"
-    t.integer  "physician_id"
-    t.integer  "attorney_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
