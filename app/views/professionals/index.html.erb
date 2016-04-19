@@ -1,19 +1,19 @@
-
+<h1 class="page-header">Professionals:</h1>
 <% if @professionals.empty? %>
   <h1>There are no Attorney currently in this category</h1>
 <% else %>
 <div class="row">
 
     <% @professionals.each do |attorney| %>
-    <div class="col-md-3">
-      <%= link_to professional_path(attorney.id) do %>
+      <div class="col-md-3">
+        <h3 class="physician-full-name"><%= attorney.full_name %></h3>
+        <div class="average-review-rating" data-score=<%= attorney.average_rating %>></div>
+        <span class="number-of-reviews">Based on <%= attorney.reviews.count %> reviews</span>
+        <%= link_to professional_path(attorney.id) do %>
         <%= image_tag attorney.image.url(:image_index), class: "attorney" %>
-      <% end %>
-      <h2 class="physician-full-name"><%= attorney.full_name %></h2>
-      <div class="average-review-rating" data-score=<%= attorney.average_rating %>></div>
-      <span class="number-of-reviews">Based on <%= attorney.reviews.count %> reviews</span>
+        <% end %>
 
-    </div>
+      </div>
     <% end %>
 </div>
 <% end %>

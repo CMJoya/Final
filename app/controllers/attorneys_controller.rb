@@ -3,7 +3,7 @@ class AttorneysController < ApplicationController
 
   def index
     profession = Profession.find_by(name: 'Attorney')
-    @attorneys = profession.professionals.order(active_rating: :desc)
+    @attorneys = profession.professionals
   end
 
   def show

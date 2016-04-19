@@ -1,3 +1,4 @@
+<h1 class="page-header"> Physicians:</h1>
 
 <% if @physicians.empty? %>
   <h1>There are no Physician currently in this category</h1>
@@ -7,6 +8,9 @@
 
     <% @physicians.each do |physician| %>
     <div class="col-md-3">
+      <h3 class="physician-full-name"><%= physician.full_name %></h3>
+      <div class="average-review-rating" data-score=<%= physician.average_rating %>></div>
+      <span class="number-of-reviews">Based on <%= physician.reviews.count %> reviews</span>
       <%= link_to professional_path(physician.id) do %>
         <%= image_tag physician.image.url(:image_index), class: "physician" %>
       <% end %>
@@ -14,3 +18,23 @@
     <% end %>
 </div>
 <% end %>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function () {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
