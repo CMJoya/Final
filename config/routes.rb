@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :subscribers
+
   root 'professionals#index'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations"}
 
   get 'professionals' => 'professionals#index', as: :professionals
   get 'professionals/:id' => 'professionals#show', as: :professional
@@ -26,4 +28,5 @@ Rails.application.routes.draw do
   put 'reviews/:id' => 'reviews#update'
   patch 'reviews/:id' => 'reviews#update'
   delete 'reviews/:id' => 'reviews#destroy'
+
 end
