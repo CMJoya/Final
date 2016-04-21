@@ -1,7 +1,7 @@
 Profession.create(name: 'Attorney')
 Profession.create(name: 'Physician')
 
-50.times do
+15.times do
   Professional.create!(first_name: Faker::Name.first_name,
                       last_name: Faker::Name.last_name,
                       address: Faker::Address.city,
@@ -11,7 +11,7 @@ Profession.create(name: 'Physician')
                       profession_id: 2,
                       average_rating: 4)
 end
-50.times do
+15.times do
   Professional.create!(first_name: Faker::Name.first_name,
                       last_name: Faker::Name.last_name,
                       address: Faker::Address.city,
