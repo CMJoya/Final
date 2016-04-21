@@ -49,6 +49,6 @@ class PhysiciansController < ApplicationController
     params
       .require(:professional)
       .permit(:first_name, :last_name, :address, :phone_number,
-              :email, :bio, :image)
+              :email, :bio, :image, :placeId)
   end
 end

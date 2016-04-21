@@ -49,6 +49,6 @@ class AttorneysController < ApplicationController
     params
       .require(:professional)
       .permit(:first_name, :last_name, :address,
-             :email, :phone_number, :bio, :image)
+             :email, :phone_number, :bio, :image, :placeId)
   end
 end
