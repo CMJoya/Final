@@ -9,7 +9,8 @@ Profession.create(name: 'Physician')
                       email: Faker::Internet.email,
                       bio: Faker::Lorem.paragraph,
                       profession_id: 2,
-                      average_rating: 4)
+                      average_rating: 4,
+                      placeId: "ChIJzyDKC3HAQIYRxP0FxTBQnmo")
 end
 15.times do
   Professional.create!(first_name: Faker::Name.first_name,
@@ -19,5 +20,6 @@ end
                       email: Faker::Internet.email,
                       bio: Faker::Lorem.paragraph,
                       profession_id: 1,
-                      average_rating: 4)
+                      average_rating: 4,
+                      placeId: "ChIJ43HSMHTAQIYR8AMiKrzqU5M")
 end
