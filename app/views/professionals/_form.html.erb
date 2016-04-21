@@ -1,4 +1,4 @@
-<%= simple_form_for Professionals, html: {multipart: true}, url: form_path do |f| %>
+<%= simple_form_for model, html: {multipart: true}, url: form_path do |f| %>
   <%= f.input :image, as: :file %>
   <%= f.input :first_name, label: "First Name" %>
   <%= f.input :last_name, label: "Last Name" %>
