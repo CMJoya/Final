@@ -6,6 +6,7 @@ class Professional < ActiveRecord::Base
   validates :phone_number, presence: true
   validates :email, presence: true
   validates :bio, presence: true
+  validates :placeId, presence: true
 
   has_many :reviews
   belongs_to :profession
