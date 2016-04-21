@@ -50,5 +50,6 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'stripe'
 gem 'figaro'
+gem 'aws-sdk'
 
 gem 'rails_12factor', group: :production
