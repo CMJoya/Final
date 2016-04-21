@@ -11,7 +11,7 @@ class Professional < ActiveRecord::Base
   has_many :reviews
   belongs_to :profession
 
-  has_attached_file :image, styles: { image_index: "250x350>", image_show: "325x475>" }, default_url: "/images/:style/missing.jpeg"
+  has_attached_file :image, styles: { image_index: "250x350>", image_show: "325x475>" }, default_url: "/images/missing.jpeg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def full_name

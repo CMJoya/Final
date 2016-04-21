@@ -10,7 +10,7 @@
         <div class="average-review-rating" data-score=<%= attorney.average_rating %>></div>
         <span class="number-of-reviews">Based on <%= attorney.reviews.count %> reviews</span>
         <%= link_to professional_path(attorney.id) do %>
-        <%= image_tag attorney.image.url(:image_index), class: "attorney" %>
+        <%= image_tag attorney.image.url, class: "attorney" %>
         <% end %>
 
       </div>
