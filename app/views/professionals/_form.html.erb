@@ -1,5 +1,5 @@
-<%= simple_form_for model, html: {multipart: true}, url: form_path do |f| %>
-  <%= f.file_field :image %>
+<%= simple_form_for model, url: form_path do |f| %>
+  <%= f.input :image, as: :file %>
   <%= f.input :first_name, label: "First Name" %>
   <%= f.input :last_name, label: "Last Name" %>
   <%= f.input :address, label: "Loacated At" %>
