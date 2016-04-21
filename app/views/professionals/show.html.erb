@@ -16,7 +16,7 @@
                 reviews</span>
             <p class="physician-bio"><%= @professional.bio %></p>
             <div class="links btn-group">
-                <%= link_to "Go Back", root_path, class: "btn btn-custom"  %>
+                <%= link_to "Go Back", professionals_path(@professional.id), class: "btn btn-custom"  %>
                 <!-- SHowing back button and conditional for only the user that created Physician to Edit and Delete  -->
                 <% if user_signed_in? %>
                 <%= link_to "Edit", edit_professional_path(@professional.id), class: "btn btn-custom" %>

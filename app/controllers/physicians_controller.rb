@@ -3,7 +3,7 @@ class PhysiciansController < ApplicationController
 
   def index
     profession = Profession.find_by(name: 'Physician')
-    @physicians = profession.professionals
+    @physicians = profession.professionals.all.order(average_rating: :DESC)
   end
 
   def show
