@@ -19,7 +19,9 @@
 
 /* Variables, mixins, etc.. */
 
+
 @mixin background-tile {
+
 	box-sizing: border-box;
 	background-color: #fff;
 	border-radius: 5px;
@@ -395,4 +397,14 @@ p.alert, p.notice {
 		margin-top: 0;
 	}
 
+}
+
+.welcome {
+	font-size: 2em;
+	font-weight: 300;
+}
+.field_box {
+	margin-top: 5em;
+	margin-left: 20em;
+	margin-right: 20em;
 }

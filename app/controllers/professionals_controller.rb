@@ -1,4 +1,5 @@
 class ProfessionalsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :edit]
 
   def index
     @professionals = Professional.all.order(average_rating: :desc)

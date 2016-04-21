@@ -1,5 +1,5 @@
 class Professional < ActiveRecord::Base
-  
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
@@ -10,7 +10,7 @@ class Professional < ActiveRecord::Base
   has_many :reviews
   belongs_to :profession
 
-  has_attached_file :image, styles: { image_index: "250x350>", image_show: "325x475>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: { image_index: "250x350>", image_show: "325x475>" }, default_url: "/images/:style/missing.jpeg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def full_name

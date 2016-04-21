@@ -8,7 +8,7 @@
         <div class="physician-info">
 
             <h2 class="physician-full-name"><%= @professional.full_name %></h2>
-            <h4 class="address"></h4>
+            <h4 class="address"><%= @professional.address %></h4>
             <h4 class="avg-rating">Average Rating</h4>
             <div class="average-review-rating" data-score=<%= @professional.average_rating %>></div>
             <span class="number-of-reviews">Based on

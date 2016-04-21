@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BooksReview</title>
+    <title>Hurt-At-Work</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -47,21 +47,20 @@
                 <li><%= link_to 'View Attorneys', attorneys_path, class: "link" %></li>
               </ul>
             </li>
+
           <% end %>
-          <li><%= link_to "Legal Rights" %></li>
         </ul>
       </div>
     </nav>
-  <div class="container">
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
 
     <div class="container">
+      <p class="notice text-center"><%= notice %></p>
+      <p class="alert text-center"><%= alert %></p>
+      <br>
+    </div>
 
+    <div class="container">
       <%= yield %>
-
     </div>
   </body>
 </html>

@@ -1,2 +1,19 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="col-md-10 col-md-offset-1">
+  <div class="physician-info">
+  <div class="welcome text-center">
+    Welcome To Hurt At Work!
+  </div>
+  <br>
+  <p class='text-center'>
+    Getting hurt sucks get the help you need!
+  </p>
+  <%= form_tag new_user_session_path, method: :post, class: 'form-horizontal' do %>
+    <div class="form-group">
+      <div class="col-sm-offset-8 col-sm-10">
+        <button type="submit" class="btn btn-default">Log In</button> <strong>Or</strong>
+        <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-info" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
