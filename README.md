@@ -1,5 +1,5 @@
-== Hurt-At-Work
-
+Hurt-At-Work
+==
 I Was Given 3 Weeks To Design, And Build A Website Of My Choosing From Scratch.
 Through My Personal Experience I Saw A Lack Of Resources For Individuals With Work Related Injuries. So I Built A Website Providing Reviews of Legal And Medical Professionals.
 
@@ -15,14 +15,22 @@ Features:
 
 * Understand Relationships between models
 
-==Sign In
+Sign In
+==
 ![img](app/assets/images/signin.png)
 
-==Stripe Subscription
+==
+
+Stripe Subscription
+==
 ![img](app/assets/images/stripe-subscription.png)
+==
 
-==Professionals Index
+Professionals Index
+==
 ![img](app/assets/images/professionals-index.png)
+==
 
-==Create Professional
+Create Professional
+==
 ![img](app/assets/images/new-physician.png)
