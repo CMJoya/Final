@@ -27,6 +27,6 @@ Professionals Index
 ==
 ![img](app/assets/images/professionals-index.png)
 
-Create Professional
+View Professional
 ==
-![img](app/assets/images/new-physician.png)
+![img](app/assets/images/sunny-the-lawyer.png)
