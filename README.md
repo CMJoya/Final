@@ -19,17 +19,13 @@ Sign In
 ==
 ![img](app/assets/images/signin.png)
 
-==
-
 Stripe Subscription
 ==
 ![img](app/assets/images/stripe-subscription.png)
-==
 
 Professionals Index
 ==
 ![img](app/assets/images/professionals-index.png)
-==
 
 Create Professional
 ==
