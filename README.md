@@ -5,6 +5,8 @@ Through My Personal Experience I Saw A Lack Of Resources For Individuals With Wo
 
 Features:
 
+* Ruby Version 2.3.0
+
 * Stripe API
 
 * Amazon AWS
@@ -14,6 +16,12 @@ Features:
 * Authentication
 
 * Understand Relationships between models
+
+Database Creation & Initialization
+==
+* rake db:create
+* rake db:migrate
+* rake db:seed
 
 Sign In
 ==
